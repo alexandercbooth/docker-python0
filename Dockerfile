@@ -1,4 +1,4 @@
-FROM continuumio/anaconda2:latest
+FROM continuumio/anaconda:latest
 
     # g++4.8 (needed for MXNet) is not currently available via the default apt-get
     # channels, so we add the Ubuntu repository (which requires python-software-properties
