@@ -1,4 +1,4 @@
-FROM continuumio/anaconda3:latest
+FROM continuumio/anaconda2:latest
 
     # g++4.8 (needed for MXNet) is not currently available via the default apt-get
     # channels, so we add the Ubuntu repository (which requires python-software-properties
@@ -12,9 +12,9 @@ RUN apt-get install -y python-software-properties && \
     mv /var/lib/apt/lists /tmp && mkdir -p /var/lib/apt/lists/partial && \
     apt-get clean && apt-get update && apt-get install -y g++-4.8 && \
     ln -s /usr/bin/gcc-4.8 /usr/bin/gcc
-    
+
     # using python 3.4 instead of 3.5 because tensorflow's install breaks on 3.5
-RUN conda install anaconda python=3.4 -y && \
+RUN conda install anaconda python=2.7 -y && \
     # TensorFlow wants bleeding-edge versions of numpy, setuptools and protobuf which
     # clash with the conda-based installs of numpy and setuptools. So we first remove
     # the existing installs and then replace them with the pip-based ones, so that
